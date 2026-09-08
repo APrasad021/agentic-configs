@@ -1,0 +1,17 @@
+{
+  "id": "dx/dev-loop",
+  "summary": "One-command bootstrap, watch-mode dev, pinned toolchain versions, and a devcontainer so agents get the same environment.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": ["ts", "py"],
+  "requires": ["dx/task-runner"],
+  "tools": [],
+  "tags": ["dx"],
+  "vars": {
+    "PROJECT_NAME": { "default": "", "description": "Repo name, used as the devcontainer name." }
+  },
+  "next": [
+    "Set .nvmrc / .python-version to the versions you actually run — CI reads them.",
+    "Time your own `make check`. Under 60s, and people run it before pushing; over that, they stop."
+  ]
+}

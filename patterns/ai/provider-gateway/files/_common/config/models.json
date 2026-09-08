@@ -1,0 +1,62 @@
+{
+  "_comment": [
+    "The single place model ids, prices and capabilities live. Everything else",
+    "in the codebase refers to models by ALIAS ('fast', 'default', 'deep'), so",
+    "swapping a model is a one-line change here rather than a grep across the",
+    "repo. Prices are USD per million tokens.",
+    "",
+    "Model ids and prices change often. Verify against provider docs before",
+    "trusting the numbers below for billing — they are defaults, not a contract."
+  ],
+
+  "aliases": {
+    "fast": "claude-haiku-4-5-20251001",
+    "default": "claude-sonnet-5",
+    "deep": "claude-opus-5"
+  },
+
+  "models": {
+    "claude-opus-5": {
+      "provider": "anthropic",
+      "contextWindow": 200000,
+      "maxOutput": 64000,
+      "price": { "input": 5.0, "output": 25.0, "cachedInput": 0.5 },
+      "supports": { "tools": true, "vision": true, "streaming": true, "promptCache": true }
+    },
+    "claude-sonnet-5": {
+      "provider": "anthropic",
+      "contextWindow": 200000,
+      "maxOutput": 64000,
+      "price": { "input": 3.0, "output": 15.0, "cachedInput": 0.3 },
+      "supports": { "tools": true, "vision": true, "streaming": true, "promptCache": true }
+    },
+    "claude-haiku-4-5-20251001": {
+      "provider": "anthropic",
+      "contextWindow": 200000,
+      "maxOutput": 64000,
+      "price": { "input": 1.0, "output": 5.0, "cachedInput": 0.1 },
+      "supports": { "tools": true, "vision": true, "streaming": true, "promptCache": true }
+    },
+    "gpt-5": {
+      "provider": "openai",
+      "contextWindow": 400000,
+      "maxOutput": 128000,
+      "price": { "input": 1.25, "output": 10.0, "cachedInput": 0.125 },
+      "supports": { "tools": true, "vision": true, "streaming": true, "promptCache": true }
+    },
+    "gemini-2.5-pro": {
+      "provider": "google",
+      "contextWindow": 1048576,
+      "maxOutput": 65536,
+      "price": { "input": 1.25, "output": 10.0, "cachedInput": 0.31 },
+      "supports": { "tools": true, "vision": true, "streaming": true, "promptCache": true }
+    }
+  },
+
+  "fallbacks": {
+    "_comment": "Tried in order when the primary model is overloaded or rate-limited. Keep a cross-provider entry: a provider-wide outage is the case fallback exists for.",
+    "claude-sonnet-5": ["claude-haiku-4-5-20251001", "gpt-5"],
+    "claude-opus-5": ["claude-sonnet-5"],
+    "gpt-5": ["claude-sonnet-5"]
+  }
+}

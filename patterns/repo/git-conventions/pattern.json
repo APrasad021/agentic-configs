@@ -1,0 +1,15 @@
+{
+  "id": "repo/git-conventions",
+  "summary": "Branch naming, conventional commits, a PR template, and a pre-push hook that runs the same gate as CI.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": ["sh"],
+  "requires": ["dx/task-runner"],
+  "tools": ["git"],
+  "tags": ["repo", "vcs"],
+  "vars": {},
+  "next": [
+    "Install the hooks: `git config core.hooksPath scripts/hooks`",
+    "Add the branch/commit rules to AGENTS.md so agents follow them too."
+  ]
+}

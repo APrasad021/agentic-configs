@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# agentic — apply standardized building patterns into a project.
+#
+#   agentic list [--domain D] [--stack S] [--status S]
+#   agentic show <id>
+#   agentic apply <id> [--target DIR] [--stack ts|py|sh|all] [--var K=V] [--force] [--dry-run]
+#   agentic check [--target DIR]
+#   agentic catalog
+#   agentic new <domain/name>
+#
+# Patterns live in patterns/<domain>/<name>/. Applying one copies its files
+# into a target repo and records what landed in <target>/.agentic/applied.json
+# so `check` can tell you what drifted and what is out of date.
+
+set -euo pipefail
+
+AGENTIC_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+export AGENTIC_ROOT
+
+# shellcheck source=../lib/common.sh
+. "$AGENTIC_ROOT/lib/common.sh"
+
+usage() {
+  sed -n '2,17p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+}
+
+cmd="${1:-help}"
+[ $# -gt 0 ] && shift || true
+
+case "$cmd" in
+  list)    . "$AGENTIC_ROOT/lib/cmd_list.sh";    cmd_list "$@" ;;
+  show)    . "$AGENTIC_ROOT/lib/cmd_show.sh";    cmd_show "$@" ;;
+  apply)   . "$AGENTIC_ROOT/lib/cmd_apply.sh";   cmd_apply "$@" ;;
+  check)   . "$AGENTIC_ROOT/lib/cmd_check.sh";   cmd_check "$@" ;;
+  catalog) . "$AGENTIC_ROOT/lib/cmd_catalog.sh"; cmd_catalog "$@" ;;
+  new)     . "$AGENTIC_ROOT/lib/cmd_new.sh";     cmd_new "$@" ;;
+  help|-h|--help) usage ;;
+  *) die "unknown command '$cmd'. Run 'agentic help'." ;;
+esac

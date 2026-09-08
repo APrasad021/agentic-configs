@@ -1,0 +1,59 @@
+# CI runs `make check`. That is the entire design.
+#
+# Every command lives in the Makefile, so there is exactly one definition of
+# "does this pass" — the one you can also run locally. A workflow that inlines
+# `npm run lint && npm test` has quietly forked that definition, and the fork
+# is only discovered when CI fails on something that passed on your machine.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Least privilege by default. A job that needs more says so explicitly.
+permissions:
+  contents: read
+
+# A new push supersedes the old run. Saves minutes and stops a stale red X
+# from sitting on a PR that has already been fixed.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Setup steps are conditional on the lockfile actually being there, so
+      # one workflow serves a TS repo, a Python repo, or both — without a
+      # matrix and without editing this file per project.
+      - name: Set up Node
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up Python
+        if: hashFiles('pyproject.toml', 'requirements.txt') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Install uv
+        if: hashFiles('uv.lock') != ''
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Bootstrap
+        run: make bootstrap
+
+      - name: Check
+        run: make check

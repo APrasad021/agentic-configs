@@ -1,0 +1,15 @@
+{
+  "id": "ci/security",
+  "summary": "Secret scanning, dependency audit and automated updates — the three that catch real incidents.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": [],
+  "requires": ["ci/github-actions"],
+  "tools": [],
+  "tags": ["ci", "security"],
+  "vars": {},
+  "next": [
+    "Enable Dependabot alerts and secret scanning in repo Settings → Security — the config file does not turn them on.",
+    "Decide your response drill for a leaked key BEFORE you need it: rotate first, scrub second."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "ai/provider-gateway",
+  "summary": "One call signature across Anthropic, OpenAI and Google, with a model registry, retries, fallback and a cost ceiling.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": ["ts", "py"],
+  "requires": ["dx/env-and-secrets"],
+  "tools": [],
+  "tags": ["ai", "providers", "foundation"],
+  "vars": {},
+  "next": [
+    "Edit config/models.json — model ids and prices move monthly; that file is the only place they live.",
+    "Apply ai/prompt-library so prompts stop living inside call sites.",
+    "Apply ai/cost-and-tokens to turn the usage numbers this returns into a per-run budget report."
+  ]
+}

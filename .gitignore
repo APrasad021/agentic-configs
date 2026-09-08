@@ -1,0 +1,23 @@
+# This repo ships templates. Keep ignores narrow so pattern files are never
+# swallowed — anything under patterns/ is content, not build output.
+
+# Local tooling noise
+.DS_Store
+*.swp
+*.log
+
+# Scratch space for trying patterns out
+/.scratch/
+/tmp/
+
+# Never commit real secrets. Patterns ship .env.example files, not .env.
+.env
+.env.*
+!.env.example
+!**/files/**/.env.example
+
+# Node / Python artifacts if you experiment in-tree
+node_modules/
+__pycache__/
+*.pyc
+.venv/

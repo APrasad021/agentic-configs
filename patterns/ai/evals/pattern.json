@@ -1,0 +1,15 @@
+{
+  "id": "ai/evals",
+  "summary": "A golden-set regression harness: cases as data, graders as code, wired into `make eval`.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": ["ts", "py"],
+  "requires": ["ai/prompt-library", "dx/task-runner"],
+  "tools": [],
+  "tags": ["ai", "testing", "quality"],
+  "vars": {},
+  "next": [
+    "Write 5 cases from real failures before writing any more machinery.",
+    "Run `make eval` on a prompt change and record the score in the PR."
+  ]
+}

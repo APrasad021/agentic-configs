@@ -1,0 +1,15 @@
+{
+  "id": "dx/observability",
+  "summary": "Structured logging with automatic secret redaction, and the trace fields an AI system actually needs.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": ["ts", "py"],
+  "requires": ["dx/env-and-secrets"],
+  "tools": [],
+  "tags": ["dx", "ai"],
+  "vars": {},
+  "next": [
+    "Replace console.log / print with this logger at your entry points first.",
+    "Decide your prompt-logging policy before you have production traffic, not after."
+  ]
+}

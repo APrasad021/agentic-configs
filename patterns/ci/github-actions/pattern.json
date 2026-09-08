@@ -1,0 +1,15 @@
+{
+  "id": "ci/github-actions",
+  "summary": "A CI workflow that calls `make check` and nothing else, so CI can never disagree with your laptop.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": [],
+  "requires": ["dx/task-runner"],
+  "tools": [],
+  "tags": ["ci", "foundation"],
+  "vars": {},
+  "next": [
+    "Apply ci/security for dependency and secret scanning.",
+    "Make the `check` job a required status check in branch protection — the workflow is advisory until you do."
+  ]
+}

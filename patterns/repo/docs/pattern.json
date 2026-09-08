@@ -1,0 +1,14 @@
+{
+  "id": "repo/docs",
+  "summary": "Architecture decision records and a changelog — the two documents that stay true as code changes.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": [],
+  "requires": ["repo/scaffold"],
+  "tools": [],
+  "tags": ["repo", "docs"],
+  "vars": {},
+  "next": [
+    "Write ADR 0001 for a decision you have already made. Retroactive ADRs are still worth writing."
+  ]
+}

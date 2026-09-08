@@ -1,0 +1,298 @@
+{
+  "schema": 1,
+  "generated": "2026-09-08T04:07:11Z",
+  "patterns": [
+    {
+      "id": "ai/agent-runtime",
+      "summary": "Tool-definition conventions, MCP server config, and the trust boundary between retrieved text and privileged tools.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [],
+      "requires": [
+        "ai/provider-gateway"
+      ],
+      "tools": [],
+      "tags": [
+        "ai",
+        "agents",
+        "security"
+      ]
+    },
+    {
+      "id": "ai/cost-and-tokens",
+      "summary": "Per-run token and cost accounting with a hard ceiling, so a runaway loop costs cents instead of a surprise invoice.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "ai/provider-gateway"
+      ],
+      "tools": [],
+      "tags": [
+        "ai",
+        "cost",
+        "dx"
+      ]
+    },
+    {
+      "id": "ai/evals",
+      "summary": "A golden-set regression harness: cases as data, graders as code, wired into `make eval`.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "ai/prompt-library",
+        "dx/task-runner"
+      ],
+      "tools": [],
+      "tags": [
+        "ai",
+        "testing",
+        "quality"
+      ]
+    },
+    {
+      "id": "ai/prompt-library",
+      "summary": "Prompts as versioned files with front-matter, loaded by id — never string literals at call sites.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "ai/provider-gateway"
+      ],
+      "tools": [],
+      "tags": [
+        "ai",
+        "prompts"
+      ]
+    },
+    {
+      "id": "ai/provider-gateway",
+      "summary": "One call signature across Anthropic, OpenAI and Google, with a model registry, retries, fallback and a cost ceiling.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "dx/env-and-secrets"
+      ],
+      "tools": [],
+      "tags": [
+        "ai",
+        "providers",
+        "foundation"
+      ]
+    },
+    {
+      "id": "ci/github-actions",
+      "summary": "A CI workflow that calls `make check` and nothing else, so CI can never disagree with your laptop.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [],
+      "requires": [
+        "dx/task-runner"
+      ],
+      "tools": [],
+      "tags": [
+        "ci",
+        "foundation"
+      ]
+    },
+    {
+      "id": "ci/release-deploy",
+      "summary": "Tag-driven releases, preview environments per PR, and a rollback that does not require a rebuild.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [],
+      "requires": [
+        "ci/github-actions"
+      ],
+      "tools": [],
+      "tags": [
+        "ci",
+        "deploy"
+      ]
+    },
+    {
+      "id": "ci/security",
+      "summary": "Secret scanning, dependency audit and automated updates — the three that catch real incidents.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [],
+      "requires": [
+        "ci/github-actions"
+      ],
+      "tools": [],
+      "tags": [
+        "ci",
+        "security"
+      ]
+    },
+    {
+      "id": "dx/dev-loop",
+      "summary": "One-command bootstrap, watch-mode dev, pinned toolchain versions, and a devcontainer so agents get the same environment.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "dx/task-runner"
+      ],
+      "tools": [],
+      "tags": [
+        "dx"
+      ]
+    },
+    {
+      "id": "dx/env-and-secrets",
+      "summary": "Fail-fast env validation, a .env.example that is the source of truth, and rules for keys that must never hit git.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [
+        "ts",
+        "py",
+        "sh"
+      ],
+      "requires": [],
+      "tools": [],
+      "tags": [
+        "dx",
+        "security",
+        "foundation"
+      ]
+    },
+    {
+      "id": "dx/observability",
+      "summary": "Structured logging with automatic secret redaction, and the trace fields an AI system actually needs.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [
+        "dx/env-and-secrets"
+      ],
+      "tools": [],
+      "tags": [
+        "dx",
+        "ai"
+      ]
+    },
+    {
+      "id": "dx/task-runner",
+      "summary": "One Makefile with a fixed verb set (bootstrap/dev/check/test/lint/fmt) that CI and humans both call.",
+      "status": "stable",
+      "version": "1.0.1",
+      "stacks": [
+        "ts",
+        "py"
+      ],
+      "requires": [],
+      "tools": [
+        "make"
+      ],
+      "tags": [
+        "dx",
+        "foundation",
+        "ci"
+      ]
+    },
+    {
+      "id": "repo/agent-context",
+      "summary": "AGENTS.md as the single source of truth for agent instructions, with tool-specific files pointing at it.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [],
+      "requires": [
+        "repo/scaffold"
+      ],
+      "tools": [],
+      "tags": [
+        "repo",
+        "ai",
+        "foundation"
+      ]
+    },
+    {
+      "id": "repo/docs",
+      "summary": "Architecture decision records and a changelog — the two documents that stay true as code changes.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [],
+      "requires": [
+        "repo/scaffold"
+      ],
+      "tools": [],
+      "tags": [
+        "repo",
+        "docs"
+      ]
+    },
+    {
+      "id": "repo/git-conventions",
+      "summary": "Branch naming, conventional commits, a PR template, and a pre-push hook that runs the same gate as CI.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [
+        "sh"
+      ],
+      "requires": [
+        "dx/task-runner"
+      ],
+      "tools": [
+        "git"
+      ],
+      "tags": [
+        "repo",
+        "vcs"
+      ]
+    },
+    {
+      "id": "repo/media-assets",
+      "summary": "Where images and video actually belong, Git LFS rules, and a pre-commit size guard.",
+      "status": "draft",
+      "version": "0.2.0",
+      "stacks": [
+        "sh"
+      ],
+      "requires": [
+        "repo/scaffold"
+      ],
+      "tools": [
+        "git"
+      ],
+      "tags": [
+        "repo",
+        "vcs",
+        "media"
+      ]
+    },
+    {
+      "id": "repo/scaffold",
+      "summary": "The files every repo needs on day one: README, .gitignore, .editorconfig, .gitattributes, CODEOWNERS.",
+      "status": "stable",
+      "version": "1.0.0",
+      "stacks": [],
+      "requires": [],
+      "tools": [],
+      "tags": [
+        "repo",
+        "foundation"
+      ]
+    }
+  ]
+}

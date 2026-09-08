@@ -1,0 +1,25 @@
+# Editor-agnostic formatting floor. Formatters own the details; this exists so
+# that a contributor without your formatter installed still produces a diff
+# that is mostly noise-free.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.{py,pyi}]
+indent_size = 4
+
+[*.{md,markdown}]
+# Trailing whitespace is a hard line break in Markdown.
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+[*.{go,mk}]
+indent_style = tab

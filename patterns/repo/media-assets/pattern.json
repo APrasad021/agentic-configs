@@ -1,0 +1,15 @@
+{
+  "id": "repo/media-assets",
+  "summary": "Where images and video actually belong, Git LFS rules, and a pre-commit size guard.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": ["sh"],
+  "requires": ["repo/scaffold"],
+  "tools": ["git"],
+  "tags": ["repo", "vcs", "media"],
+  "vars": {},
+  "next": [
+    "Append the LFS block from docs/media-assets.md to .gitattributes — it is not applied automatically, on purpose.",
+    "Wire scripts/check-media.sh into your pre-commit hook."
+  ]
+}

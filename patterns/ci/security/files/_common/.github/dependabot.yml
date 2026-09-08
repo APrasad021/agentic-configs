@@ -1,0 +1,31 @@
+# Grouped, weekly, and low-noise on purpose.
+#
+# The failure mode of dependency automation is not missing an update — it is
+# 40 open PRs nobody reviews, which trains you to ignore the one that matters.
+# Grouping minor+patch into a single weekly PR keeps the signal.
+
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: weekly }
+    open-pull-requests-limit: 5
+    groups:
+      # Minor and patch land together. Majors stay separate — they need a human.
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: pip
+    directory: /
+    schedule: { interval: weekly }
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]

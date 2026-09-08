@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Run the same gate CI runs, before the push rather than four minutes after it.
+#
+# Install: git config core.hooksPath scripts/hooks
+# Bypass:  git push --no-verify   (fine for a WIP branch; never for main)
+
+set -euo pipefail
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+case "$branch" in
+  main|master)
+    echo "pre-push: refusing to push directly to $branch — open a PR" >&2
+    exit 1
+    ;;
+esac
+
+# Catch obvious secrets before they leave the machine. This is a backstop, not
+# a scanner — ci/security runs the real one. It exists because rotating a key
+# is a lot more work than fixing a commit.
+if git diff --cached --name-only 2>/dev/null | grep -qE '(^|/)\.env$'; then
+  echo "pre-push: .env is staged — it must never be committed" >&2
+  exit 1
+fi
+
+if command -v make >/dev/null 2>&1 && [ -f Makefile ]; then
+  echo "pre-push: running make check"
+  make check
+fi

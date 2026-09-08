@@ -1,0 +1,29 @@
+{
+  "id": "dx/task-runner",
+  "summary": "One Makefile with a fixed verb set (bootstrap/dev/check/test/lint/fmt) that CI and humans both call.",
+  "status": "stable",
+  "version": "1.0.1",
+  "stacks": [
+    "ts",
+    "py"
+  ],
+  "requires": [],
+  "tools": [
+    "make"
+  ],
+  "tags": [
+    "dx",
+    "foundation",
+    "ci"
+  ],
+  "vars": {
+    "PROJECT_NAME": {
+      "default": "",
+      "description": "Repo name, used in help output."
+    }
+  },
+  "next": [
+    "Run `make help` to see the verb set.",
+    "Apply ci/github-actions \u2014 its workflow calls `make check`, so CI and local runs can never drift."
+  ]
+}

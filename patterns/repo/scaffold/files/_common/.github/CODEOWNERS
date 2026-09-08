@@ -1,0 +1,16 @@
+# Every path has an owner, so a PR always has someone to route to.
+# Later rules win, so the catch-all goes first.
+
+*                       @{{GITHUB_OWNER}}
+
+# Changes here alter what runs on every commit — worth a deliberate look.
+/.github/               @{{GITHUB_OWNER}}
+/Makefile               @{{GITHUB_OWNER}}
+/make/                  @{{GITHUB_OWNER}}
+
+# Model ids, prices and fallbacks. A one-line edit here changes the cost of
+# every call in the system.
+/config/models.json     @{{GITHUB_OWNER}}
+
+# Prompts are behaviour. Review them like code.
+/prompts/               @{{GITHUB_OWNER}}

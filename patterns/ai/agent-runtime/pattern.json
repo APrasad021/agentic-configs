@@ -1,0 +1,15 @@
+{
+  "id": "ai/agent-runtime",
+  "summary": "Tool-definition conventions, MCP server config, and the trust boundary between retrieved text and privileged tools.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": [],
+  "requires": ["ai/provider-gateway"],
+  "tools": [],
+  "tags": ["ai", "agents", "security"],
+  "vars": {},
+  "next": [
+    "Read docs/agent-boundaries.md and classify your own tools as read / write / privileged.",
+    "This pattern is a set of rules, not code — the loop itself is framework-specific."
+  ]
+}

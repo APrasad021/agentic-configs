@@ -1,0 +1,50 @@
+# Deliberately covers several ecosystems in one file. A Python repo ignoring
+# node_modules costs nothing, and a single combined file beats maintaining
+# per-language fragments that drift.
+
+# ---- secrets (see dx/env-and-secrets) ----
+.env
+.env.*
+!.env.example
+
+# ---- os / editor ----
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# ---- node / typescript ----
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+*.tsbuildinfo
+npm-debug.log*
+pnpm-debug.log*
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---- ai / agent working files ----
+# Traces and eval output are reproducible artifacts, not source.
+.agent-runs/
+evals/results/
+*.trace.jsonl
+
+# ---- misc ----
+coverage/
+.cache/
+tmp/

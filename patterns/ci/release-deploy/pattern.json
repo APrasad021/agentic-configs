@@ -1,0 +1,15 @@
+{
+  "id": "ci/release-deploy",
+  "summary": "Tag-driven releases, preview environments per PR, and a rollback that does not require a rebuild.",
+  "status": "draft",
+  "version": "0.2.0",
+  "stacks": [],
+  "requires": ["ci/github-actions"],
+  "tools": [],
+  "tags": ["ci", "deploy"],
+  "vars": {},
+  "next": [
+    "Fill in the deploy step — it is a placeholder, because the command depends on your platform.",
+    "Configure the `production` environment in repo Settings with a required reviewer."
+  ]
+}

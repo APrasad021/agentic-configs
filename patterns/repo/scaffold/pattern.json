@@ -1,0 +1,27 @@
+{
+  "id": "repo/scaffold",
+  "summary": "The files every repo needs on day one: README, .gitignore, .editorconfig, .gitattributes, CODEOWNERS.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": [],
+  "requires": [],
+  "tools": [],
+  "tags": [
+    "repo",
+    "foundation"
+  ],
+  "vars": {
+    "PROJECT_NAME": {
+      "default": "",
+      "description": "Repo name. Defaults to the target directory name."
+    },
+    "GITHUB_OWNER": {
+      "default": "APrasad021",
+      "description": "GitHub user or org, used in CODEOWNERS and links."
+    }
+  },
+  "next": [
+    "Fill in the README's first paragraph \u2014 it is the only section people reliably read.",
+    "Apply repo/agent-context so agents get the same orientation humans do."
+  ]
+}

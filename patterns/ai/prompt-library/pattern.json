@@ -1,0 +1,15 @@
+{
+  "id": "ai/prompt-library",
+  "summary": "Prompts as versioned files with front-matter, loaded by id — never string literals at call sites.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": ["ts", "py"],
+  "requires": ["ai/provider-gateway"],
+  "tools": [],
+  "tags": ["ai", "prompts"],
+  "vars": {},
+  "next": [
+    "Move one existing inline prompt into prompts/ and see how the diff reads.",
+    "Apply ai/evals — a prompt library without evals is just tidier guessing."
+  ]
+}

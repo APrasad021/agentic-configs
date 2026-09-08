@@ -1,0 +1,51 @@
+# Tag-driven release. Pushing a tag is the deliberate act; nothing deploys to
+# production from a branch push.
+#
+# STATUS: draft — the deploy step is a placeholder. Everything around it (the
+# gate, the environment, the artifact) is the part worth keeping.
+
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  # Re-run the full gate against the tagged commit. It almost always passes —
+  # and the one time it does not is the run that pays for all the others.
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make bootstrap
+      - run: make check
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    # A GitHub Environment gives you required reviewers, wait timers and
+    # scoped secrets. This is where a human approval belongs — not in a
+    # workflow condition someone can edit in the same PR.
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    permissions:
+      contents: read
+      id-token: write   # for OIDC to your cloud — prefer this over long-lived keys
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: deploy
+        run: |
+          echo "TODO: your deploy command here"
+          echo "url=https://example.com" >> "$GITHUB_OUTPUT"
+
+      # Rollback must not require a rebuild. If rolling back means re-running
+      # the build, your rollback takes as long as a deploy — at the worst
+      # possible moment. Deploy an immutable artifact, keep the previous one,
+      # and make rollback a pointer change.
+      - name: Record deployed revision
+        run: echo "${{ github.sha }} deployed as ${{ github.ref_name }}"

@@ -1,0 +1,11 @@
+# <type>(<scope>): <subject>          ← 50 chars, imperative: "add", not "added"
+#
+# <body: why, not what — the diff already says what>
+#
+# <footer: Closes #123 / BREAKING CHANGE: ...>
+#
+# type: feat fix docs style refactor perf test build ci chore revert
+#       prompt  — a change to prompt text or model selection
+#       eval    — a change to the eval set
+#
+# Enable with: git config commit.template .gitmessage

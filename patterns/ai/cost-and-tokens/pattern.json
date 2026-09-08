@@ -1,0 +1,15 @@
+{
+  "id": "ai/cost-and-tokens",
+  "summary": "Per-run token and cost accounting with a hard ceiling, so a runaway loop costs cents instead of a surprise invoice.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": ["ts", "py"],
+  "requires": ["ai/provider-gateway"],
+  "tools": [],
+  "tags": ["ai", "cost", "dx"],
+  "vars": {},
+  "next": [
+    "Wrap your entry point in withRunBudget / run_budget so every call is attributed to a run.",
+    "Print the summary at the end of every CLI run and job — cost you cannot see is cost you do not manage."
+  ]
+}

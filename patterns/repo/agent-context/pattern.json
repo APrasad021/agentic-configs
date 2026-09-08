@@ -1,0 +1,17 @@
+{
+  "id": "repo/agent-context",
+  "summary": "AGENTS.md as the single source of truth for agent instructions, with tool-specific files pointing at it.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": [],
+  "requires": ["repo/scaffold"],
+  "tags": ["repo", "ai", "foundation"],
+  "tools": [],
+  "vars": {
+    "PROJECT_NAME": { "default": "", "description": "Repo name. Defaults to the target directory name." }
+  },
+  "next": [
+    "Fill in the Architecture and Conventions sections — the generic parts are worth less than nothing to an agent.",
+    "Delete any rule you would not actually enforce in review. An ignored rule teaches agents to ignore the file."
+  ]
+}

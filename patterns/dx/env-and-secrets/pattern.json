@@ -1,0 +1,16 @@
+{
+  "id": "dx/env-and-secrets",
+  "summary": "Fail-fast env validation, a .env.example that is the source of truth, and rules for keys that must never hit git.",
+  "status": "stable",
+  "version": "1.0.0",
+  "stacks": ["ts", "py", "sh"],
+  "requires": [],
+  "tools": [],
+  "tags": ["dx", "security", "foundation"],
+  "vars": {},
+  "next": [
+    "Fill in .env from .env.example — `make bootstrap` copies it for you.",
+    "Add every new key to .env.example in the same commit that reads it.",
+    "Apply ai/provider-gateway, which reads its credentials through this module."
+  ]
+}
