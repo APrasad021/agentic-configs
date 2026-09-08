@@ -126,3 +126,8 @@ over fast, so the structure has to make revision cheap:
 ## Authoring
 
 See [docs/authoring-patterns.md](docs/authoring-patterns.md).
+
+## Planned work
+
+See [BACKLOG.md](BACKLOG.md) — four items in dependency order, each with a
+plan of attack written for a coding agent picking it up cold.

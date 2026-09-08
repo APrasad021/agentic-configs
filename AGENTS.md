@@ -4,6 +4,10 @@ This repo holds reusable building patterns. It is also, deliberately, an
 example of the conventions it ships — so changes here should follow the rules
 in `conventions/`.
 
+**Picking up planned work?** `BACKLOG.md` has four items in dependency order,
+each with a plan of attack, a done-when, and the traps. Start there rather than
+inventing an approach.
+
 ## Orientation
 
 - **The CLI:** `bin/agentic` dispatches to `lib/cmd_*.sh`. Bash + `jq` only.
